@@ -268,6 +268,9 @@ persist.vendor.rcs.singlereg.feature=1
 ro.telephony.default_network=33,33
 telephony.lteOnCdmaDevice=1
 
+# Security patch
+ro.vendor.kernel.security_patch=2025-04-05
+
 # Sensors
 persist.vendor.sensors.debug.ssc_qmi_debug=true
 persist.vendor.sensors.enable.bypass_worker=true
