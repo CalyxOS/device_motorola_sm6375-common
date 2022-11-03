@@ -339,7 +339,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/lineage/interfaces/power-libperfmgr \
-    hardware/qcom-caf/common/libqti-perfd-client
+    hardware/qcom-caf/common/libqti-perfd-client \
+    hardware/samsung
 
 # Telephony
 PRODUCT_PACKAGES += \
