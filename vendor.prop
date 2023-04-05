@@ -218,6 +218,9 @@ persist.vendor.ims.vt.enableadb=1
 # Incremental FS
 ro.incremental.enable=true
 
+# OEM Unlock
+ro.oem_unlock_supported=1
+
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.perf-hal.ver=2.2
