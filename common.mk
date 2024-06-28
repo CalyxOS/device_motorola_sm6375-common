@@ -425,4 +425,4 @@ PRODUCT_PACKAGES += \
     libwfdaac_vendor
 
 # Inherit from vendor blobs
-$(call inherit-product, vendor/motorola/sm7325-common/sm7325-common-vendor.mk)
+$(call inherit-product, vendor/motorola/sm6375-common/sm6375-common-vendor.mk)
