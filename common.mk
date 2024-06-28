@@ -71,8 +71,8 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-qti \
     android.hardware.boot@1.1-impl-qti.recovery \
     android.hardware.boot@1.1-service \
-    bootctrl.lahaina \
-    bootctrl.lahaina.recovery
+    bootctrl.holi \
+    bootctrl.holi.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
@@ -91,7 +91,7 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.3-impl \
     audioadsprpcd \
     audio.bluetooth.default \
-    audio.primary.lahaina \
+    audio.primary.holi \
     audio.r_submix.default \
     audio.usb.default \
     firmware_aw_cali.bin_symlink \
@@ -105,7 +105,7 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libreverbwrapper \
     libvisualizer \
-    sound_trigger.primary.lahaina
+    sound_trigger.primary.holi
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/sku_yupik/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_yupik/audio_io_policy.conf \
@@ -209,7 +209,7 @@ PRODUCT_ENABLE_UFFD_GC := false
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.1-service.motorola_lahaina
+    vendor.lineage.livedisplay@2.1-service.motorola_holi
 
 # Media
 PRODUCT_PACKAGES += \
