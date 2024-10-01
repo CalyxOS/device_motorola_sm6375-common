@@ -66,6 +66,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.media.audio.common.types-V2-cpp.so', 'android.media.audio.common.types-V4-cpp.so'),
     'vendor/etc/vintf/manifest/vendor.dolby.media.c2@1.0-service.xml': blob_fixup()
         .regex_replace('IComponentStore/default9', 'IComponentStore/default'),
+    'vendor/lib64/libril-db.so': blob_fixup()
+        .binary_regex_replace(rb'persist\.vendor\.radio\.poweron_opt', rb'persist.vendor.radio.poweron_ign'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
