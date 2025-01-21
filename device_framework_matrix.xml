@@ -1,4 +1,68 @@
 <compatibility-matrix version="2.0" type="framework">
+    <hal format="aidl" optional="true">
+       <name>android.hardware.radio.data</name>
+       <interface>
+           <name>IRadioData</name>
+           <instance>slot1</instance>
+           <instance>slot2</instance>
+       </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+       <name>android.hardware.radio.ims</name>
+       <interface>
+           <name>IRadioIms</name>
+           <instance>slot1</instance>
+           <instance>slot2</instance>
+       </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+       <name>android.hardware.radio.messaging</name>
+       <interface>
+           <name>IRadioMessaging</name>
+           <instance>slot1</instance>
+           <instance>slot2</instance>
+       </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+       <name>android.hardware.radio.modem</name>
+       <interface>
+           <name>IRadioModem</name>
+           <instance>slot1</instance>
+           <instance>slot2</instance>
+       </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+       <name>android.hardware.radio.network</name>
+       <interface>
+           <name>IRadioNetwork</name>
+           <instance>slot1</instance>
+           <instance>slot2</instance>
+       </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+       <name>android.hardware.radio.sim</name>
+       <interface>
+           <name>IRadioSim</name>
+           <instance>slot1</instance>
+           <instance>slot2</instance>
+       </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+       <name>android.hardware.radio.voice</name>
+       <interface>
+           <name>IRadioVoice</name>
+           <instance>slot1</instance>
+           <instance>slot2</instance>
+       </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.uwb</name>
+        <version>1.0</version>
+        <interface>
+            <name>IUwb</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>com.motorola.hardware.biometric.fingerprint</name>
         <transport>hwbinder</transport>
@@ -39,14 +103,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>motorola.hardware.camera.imgtuner</name>
-        <version>1.0</version>
-        <interface>
-            <name>IImageTuning</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>motorola.hardware.fdrcontrol</name>
         <version>1.0-2</version>
         <interface>
@@ -59,6 +115,62 @@
         <version>1.0</version>
         <interface>
             <name>IMotFMRadio</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.egistec.hardware.fingerprint</name>
+        <version>4.0</version>
+        <interface>
+            <name>IBiometricsFingerprintRbs</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.goodix.hardware.biometrics.fingerprint</name>
+        <version>2.1</version>
+        <interface>
+            <name>IGoodixFingerprintDaemon</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nxp.nxpnfc</name>
+        <version>2.0</version>
+        <interface>
+            <name>INxpNfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.dvr</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDvrDisplay</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.trustonic.tee</name>
+        <version>1.1</version>
+        <interface>
+            <name>ITee</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.trustonic.tee.tui</name>
+        <version>1.0</version>
+        <interface>
+            <name>ITui</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.trustonic.teeregistry</name>
+        <version>1.0</version>
+        <interface>
+            <name>ITeeRegistry</name>
             <instance>default</instance>
         </interface>
     </hal>

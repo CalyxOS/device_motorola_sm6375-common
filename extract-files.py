@@ -20,10 +20,12 @@ from extract_utils.main import (
 
 namespace_imports = [
     'device/motorola/sm6375-common',
+    'hardware/motorola',
+    'hardware/qcom-caf/common/libqti-perfd-client',
     'hardware/qcom-caf/sm8350',
     'hardware/qcom-caf/wlan',
-    'vendor/qcom/opensource/commonsys-intf/display',
     'vendor/qcom/opensource/commonsys/display',
+    'vendor/qcom/opensource/commonsys-intf/display',
     'vendor/qcom/opensource/dataservices',
     'vendor/qcom/opensource/display',
 ]
@@ -43,9 +45,7 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.qspmhal@1.0',
     ): lib_fixup_vendor_suffix,
     (
-        'libofflinelog',
         'libqsap_sdk',
-        'libthermalclient',
         'libwpa_client',
     ): lib_fixup_remove,
 }
@@ -64,6 +64,8 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libinput_shim.so'),
     ('system_ext/lib/libwfdservice.so', 'system_ext/lib64/libwfdservice.so'): blob_fixup()
         .replace_needed('android.media.audio.common.types-V2-cpp.so', 'android.media.audio.common.types-V4-cpp.so'),
+    'vendor/etc/vintf/manifest/vendor.dolby.media.c2@1.0-service.xml': blob_fixup()
+        .regex_replace('IComponentStore/default9', 'IComponentStore/default'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
