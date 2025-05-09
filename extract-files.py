@@ -62,8 +62,6 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.media.audio.common.types-V2-cpp.so', 'android.media.audio.common.types-V4-cpp.so'),
     ('vendor/bin/init.kernel.post_boot-blair.sh', 'vendor/bin/init.kernel.post_boot-holi.sh'): blob_fixup()
         .regex_replace('ro.boot.using_zram_from_fstab', 'ro.vendor.zram.swapon'),
-    'vendor/lib64/libril-db.so': blob_fixup()
-        .binary_regex_replace(rb'persist\.vendor\.radio\.poweron_opt', rb'persist.vendor.radio.poweron_ign'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
@@ -72,6 +70,10 @@ module = ExtractUtilsModule(
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
+)
+
+module.add_proprietary_file('proprietary-files-fm.txt').add_copy_files_guard(
+    'TARGET_HAS_FM', 'true'
 )
 
 if __name__ == '__main__':

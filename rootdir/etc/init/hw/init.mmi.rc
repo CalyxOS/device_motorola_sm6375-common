@@ -28,6 +28,7 @@ on early-init
     # Map oem properties, this must follow
     # execution of vendor.oem-hw-sh to set
     # required properties.
+    setprop ro.carrier ${ro.boot.carrier}
     setprop ro.sf.lcd_density ${ro.boot.lcd_density}
     setprop ro.vendor.fsg-id ${ro.boot.fsg-id}
     setprop ro.vendor.hw.device ${ro.boot.device}
@@ -145,7 +146,7 @@ on post-fs-data
     # Setup folder for Pre-Activation Kill Switch app (PAKS)
     mkdir /mnt/vendor/persist/paks 02770 vendor_tcmd vendor_tcmd
 
-    chown vendor_pwric vendor_pwric /sys/class/power_supply/battery/cycle_count
+    chown system system /sys/class/power_supply/battery/cycle_count
     chmod 0664 /sys/class/power_supply/battery/cycle_count
     chmod 0664 /sys/class/power_supply/battery/charge_control_limit
 
@@ -173,12 +174,6 @@ on post-fs-data
     chown vendor_pwric vendor_pwric /sys/class/power_supply/wireless/voltage_now
     chown vendor_pwric vendor_pwric /sys/class/power_supply/wireless/voltage_max
     chmod 0664 /sys/class/power_supply/wireless/voltage_max
-    chown vendor_pwric vendor_pwric /sys/kernel/debug/pmic-votable/CHG_DISABLE/force_val
-    chmod 0664 /sys/kernel/debug/pmic-votable/CHG_DISABLE/force_val
-    chown vendor_pwric vendor_pwric /sys/kernel/debug/pmic-votable/CHG_DISABLE/force_active
-    chmod 0664 /sys/kernel/debug/pmic-votable/CHG_DISABLE/force_active
-    chown vendor_pwric vendor_pwric /sys/kernel/debug/regulator/smb5-vconn/enable
-    chmod 0664 /sys/kernel/debug/regulator/smb5-vconn/enable
 
     chown root vendor_mod /sys/module/qpnp_smbcharger_mmi/parameters/eb_rechrg_start_soc
     chown root vendor_mod /sys/module/qpnp_smbcharger_mmi/parameters/eb_rechrg_stop_soc
@@ -217,9 +212,6 @@ on post-fs-data
 
     # Setup folder for aplogd
     mkdir /data/vendor/aplogd 0770 log log
-
-    # Create directory used by chargeonlymode
-    mkdir /data/vendor/chargeonly 0750 root log
 
     # Subsystem RAM-dumps
     mkdir /data/vendor/ss-ram-dumps 0750 system log
@@ -287,12 +279,6 @@ on boot
    # Quiet binder logs
    write /sys/module/binder/parameters/debug_mask 0x5
 
-   # Clear cooldown state
-   mkdir /mnt/vendor/persist/chargeonly 0770 system system
-   write /mnt/vendor/persist/chargeonly/cooldown n
-   chown system system /mnt/vendor/persist/chargeonly/cooldown
-   chmod 0660 /mnt/vendor/persist/chargeonly/cooldown
-
    # Change owner ship of l5 laser calibration
    chown camera vendor_tcmd /mnt/vendor/persist/camera/focus/offset_cal
    chmod 0660 /mnt/vendor/persist/camera/focus/offset_cal
@@ -300,16 +286,6 @@ on boot
    # change ownership of capsensor related sysfs node
    chown system system /sys/class/capsense/reset
    chown system system /sys/class/capsense/int_state
-
-on charger
-    trigger early-fs
-    trigger fs
-    trigger post-fs
-    trigger late-fs
-    trigger post-fs-data
-    trigger moto-charger
-    class_stop main
-    class_stop late_start
 
 on property:sys.boot_completed=1 && property:ro.vendor.zram.swapon=true
     write /sys/block/zram0/comp_algorithm lz4
@@ -402,8 +378,3 @@ on property:vendor.hw.touch.status="ready"
 
 on property:ro.boot.revision=*
     setprop ro.boot.hardware.revision ${ro.boot.revision}
-
-service vendor.charge_only_mode /vendor/bin/charge_only_mode
-    user root
-    group graphics system input
-    disabled
