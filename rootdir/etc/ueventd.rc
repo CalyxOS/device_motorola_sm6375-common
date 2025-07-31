@@ -505,6 +505,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/devices/platform/soc/*.i2c/i2c-*/*-*/iio:device*   in_temp_scale_available         0664    system  system
 
 # fps device node
+/dev/focaltech_fp                                       0660   system     system
 /dev/fpsensor                                           0660   system     system
 /dev/goodix_fp                                          0664   system     system
 /dev/esfp0                                              0664   system     system
